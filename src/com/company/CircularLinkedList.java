@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Checks if a LinkedList is Circular and returns the index where it starts
+ */
 public class CircularLinkedList {
 
     int size = 0;
@@ -18,10 +21,9 @@ public class CircularLinkedList {
 
 
     /**
-     * The code below adds a circular LinkedList in order to get checked
+     * adds the nodes to the LinkedList
      * @param data
      */
-
     public void add(int data) {
         //Create new node
         Node newNode = new Node(data);
@@ -42,6 +44,9 @@ public class CircularLinkedList {
         size++;
     }
 
+    /**
+     * displays the LinkedList
+     */
     public void display() {
         Node current = head;
         if(head == null) {
@@ -59,19 +64,22 @@ public class CircularLinkedList {
     }
 
 
+    /**
+     * Takes in the sample input that main calls, and checks if it is circular
+     * @return
+     */
     public int check() {
-
         Node fast = head;
         Node slow = head;
 
         int counter = 0;
         while (fast!= null && fast.next != null) {
 
-            fast = fast.next.next;
+            fast = fast.next.next;          // fast node is incrementing faster than the slow node
             slow = slow.next;
             counter++;
 
-            if (counter == size) {
+            if (counter == size) {          // want to reset the counter
                 counter = 0;
             }
 
@@ -83,7 +91,10 @@ public class CircularLinkedList {
         return -1;
     }
 
-
+    /**
+     * Calls all of the above function
+     * @param args
+     */
     public static void main(String[] args) {
         CircularLinkedList cl = new CircularLinkedList();
         //Adds data to the list
